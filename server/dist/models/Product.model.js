@@ -4,6 +4,7 @@ const mongoose_1 = require("mongoose");
 const productSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
+    category: { type: String, required: true },
     price: { type: Number, required: true },
     raiting: { type: Number, default: 0 },
     stock: { type: Number, required: true },
@@ -16,7 +17,7 @@ const productSchema = new mongoose_1.Schema({
     reviews: [
         {
             user_id: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
-            comment: { type: String, required: true },
+            comment: { type: String, default: "" },
             raiting: { type: Number, default: 0 },
         },
     ],

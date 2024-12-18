@@ -4,6 +4,7 @@ import { ProductType } from "../types";
 const productSchema: Schema<ProductType> = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
+  category: { type: String, required: true },
   price: { type: Number, required: true },
   raiting: { type: Number, default: 0 },
   stock: { type: Number, required: true },
@@ -16,7 +17,7 @@ const productSchema: Schema<ProductType> = new Schema({
   reviews: [
     {
       user_id: { type: Schema.Types.ObjectId, ref: "User" },
-      comment: { type: String, required: true },
+      comment: { type: String, default: "" },
       raiting: { type: Number, default: 0 },
     },
   ],

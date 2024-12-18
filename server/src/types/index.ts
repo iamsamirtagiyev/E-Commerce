@@ -12,6 +12,8 @@ export interface UserType extends Document {
   password: string;
   avatar: ImageType;
   reset_otp?: number;
+  role: "user" | "admin";
+  basket?: BasketType[];
 }
 
 export interface ReviewType {
@@ -20,13 +22,19 @@ export interface ReviewType {
   raiting: number;
 }
 
+export interface BasketType {
+  product_id: Schema.Types.ObjectId;
+  number: number;
+}
+
 export interface ProductType extends Document {
   name: string;
   description: string;
+  category: string;
   price: number;
   images: ImageType[];
   raiting: number;
-  reviews: ReviewType[];
+  reviews?: ReviewType[];
   stock: number;
 }
 

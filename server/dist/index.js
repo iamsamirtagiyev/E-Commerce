@@ -9,6 +9,8 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const db_config_1 = require("./config/db.config");
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
+const product_routes_1 = __importDefault(require("./routes/product.routes"));
+const user_routes_1 = __importDefault(require("./routes/user.routes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -21,4 +23,6 @@ app.use((0, cors_1.default)({
 const port = process.env.PORT || 3000;
 app.get("/", (_req, res) => res.send("Hello Server"));
 app.use("/api/auth", auth_routes_1.default);
+app.use("/api/product", product_routes_1.default);
+app.use("/api/user", user_routes_1.default);
 app.listen(port, () => console.log("Server is running on port -> " + port));

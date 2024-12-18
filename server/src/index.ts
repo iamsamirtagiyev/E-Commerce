@@ -4,6 +4,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { db } from "./config/db.config";
 import authRouter from "./routes/auth.routes";
+import productRouter from "./routes/product.routes";
+import userRouter from "./routes/user.routes";
 
 const app: Application = express();
 
@@ -24,5 +26,7 @@ const port = process.env.PORT || 3000;
 app.get("/", (_req: Request, res: any) => res.send("Hello Server"));
 
 app.use("/api/auth", authRouter);
+app.use("/api/product", productRouter);
+app.use("/api/user", userRouter);
 
 app.listen(port, () => console.log("Server is running on port -> " + port));
