@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const product_controller_1 = require("../controllers/product.controller");
+const is_admin_1 = require("../middlewares/is-admin");
 const router = (0, express_1.Router)();
 router.get("/", product_controller_1.getProducts);
-router.post("/new", product_controller_1.createProduct);
-router.patch("/:id", product_controller_1.updateProduct);
-router.delete("/:id", product_controller_1.deleteProduct);
+router.post("/new", is_admin_1.isAdmin, product_controller_1.createProduct);
+router.patch("/:id", is_admin_1.isAdmin, product_controller_1.updateProduct);
+router.delete("/:id", is_admin_1.isAdmin, product_controller_1.deleteProduct);
 exports.default = router;
